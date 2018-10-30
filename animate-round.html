@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- 每秒钟移动的距离是不确定的，0s ~ 10s的变化 -->
+	<!-- 坦克的匀速移动 -->
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		* {
+			padding: 0;
+			margin: 0;
+		}
+	</style>
+</head>
+<body>
+	<div id="myCanvas">
+		<canvas id="canvas1" width="1500" height="400"></canvas>
+	</div>
+	<script>
+		var can1 = document.getElementById("canvas1");
+		var ctx1 = can1.getContext('2d');
+
+		ctx1.arc(100,200,100,0,2*Math.PI);
+		ctx1.strokeStyle = "red";
+		ctx1.stroke();
+
+		var timer = null;
+		timer = setInterval(function () {
+			autoplay();
+		},30);
+
+		var startPoint = 0;
+		var startTime = new Date().valueOf();
+
+		function autoplay() {
+			ctx1.clearRect(0,0,1500,400);
+
+			var currentTime = new Date().valueOf();
+			var elapaseTime = currentTime - startTime;
+			// 0-10s中占据的比例 值：0-1
+			var ratio = elapaseTime / 1000 / 10;
+			if(ratio >= 1)
+				clearInterval(timer);
+			console.log(ratio);
+			startPoint = 100 + (ratio * 1000);
+			ctx1.beginPath();
+			ctx1.arc(startPoint,200,100,0,2*Math.PI);
+			ctx1.closePath();
+			ctx1.strokeStyle = "red";
+			ctx1.stroke();
+
+			ctx1.font = '20px "微软雅黑"';           
+            ctx1.textBaseline = "middle";            
+            ctx1.textAlign = "center"; 
+            // .toFixed(0)不保留小数点，四舍五入              
+            ctx1.fillText((10*ratio).toFixed(0),startPoint,200);
+		}
+
+	</script>
+</body>
+</html>
