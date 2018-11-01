@@ -37,12 +37,13 @@
 
 			var currentTime = new Date().valueOf();
 			var elapaseTime = currentTime - startTime;
-			// 0-10s中占据的比例 值：0-1
-			var ratio = elapaseTime / 1000 / 10;
-			if(ratio >= 1)
+			// 间隔时间是0s-10s内
+			var totalTime = elapaseTime / 1000 ;
+			console.log(totalTime);
+			if(totalTime >= 10)
 				clearInterval(timer);
-			console.log(ratio);
-			startPoint = 100 + (ratio * 1000);
+			// 50像素/s 是规定的速度
+			startPoint = 100 + (totalTime * 50);
 			ctx1.beginPath();
 			ctx1.arc(startPoint,200,100,0,2*Math.PI);
 			ctx1.closePath();
@@ -53,7 +54,7 @@
             ctx1.textBaseline = "middle";            
             ctx1.textAlign = "center"; 
             // .toFixed(0)不保留小数点，四舍五入              
-            ctx1.fillText((10*ratio).toFixed(0),startPoint,200);
+            ctx1.fillText((totalTime).toFixed(0),startPoint,200);
 		}
 
 	</script>
