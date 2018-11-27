@@ -45,7 +45,7 @@ var render = function(){
 	window.onkeydown = function(e){
 		var e = e || window.event;
 		if(e.keyCode == 37){
-			e.preventDefault();
+			e.preventDefault(); // 拦截滚动条事件
 			tank.dir_l = 1; // 左箭头
 			startTime = new Date().valueOf();
 		}
