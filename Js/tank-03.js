@@ -6,22 +6,41 @@ var tankObj = function() {
 	this.y;
 	this.speed;
 	this.tankBody = new Image();
-	this.dir_l;
-	this.dir_r;
-	this.dir_u;
-	this.dir_d;
+	this.direction;
+	this.isRun;
 }
 tankObj.prototype.init = function() {
 	this.x = 370;
 	this.y = 540;
 	this.speed = 1;
 	this.tankBody.src = "img/enemy3D.jpg";
-	this.dir_l = 0;
-	this.dir_r = 0;
-	this.dir_u = 0;
-	this.dir_d = 0;
+	this.direction = 0;
+	this.isRun = false;
 }
 tankObj.prototype.drawTank = function() {
+	if(this.isRun){
+		var speed = this.speed;
+		// 0,1,2,3 分别代表 上，右，下，左
+		if(this.direction%2 == 0){
+			// 0，2 y值在变化
+			speed = this.direction == 0 ? -speed : speed;
+			this.y += speed;
+			if(this.y <= 0) this.y =0;
+			if(this.y >= 540) this.y =540;
+		}else{
+			// 1，3 x值在变化
+			speed = this.direction == 1 ? speed : -speed;
+			this.x += speed;
+			if(this.x <= 0) this.x =0;
+			if(this.x >= 740) this.x =740;
+		}
+	}
+	ctx1.translate(this.x+30,this.y+30);
+	ctx1.rotate((Math.PI / 180) * (90*this.direction));
+	ctx1.translate(-this.x-30,-this.y-30);
+	ctx1.drawImage(this.tankBody,this.x,this.y);
+
+	/*
 	if(this.dir_l == 1){
 		this.x -= this.speed;
 		if(this.x <= 0) this.x =0;
@@ -52,7 +71,7 @@ tankObj.prototype.drawTank = function() {
 		ctx1.translate(-this.x-30,-this.y-30);
 		// this.tankBody.src = "img/enemy3U.jpg";
 	}
-	ctx1.drawImage(this.tankBody,this.x,this.y);
+	*/
 }
 
 

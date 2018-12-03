@@ -17,6 +17,36 @@ var render = function(){
 	// 键盘监听
 	window.onkeydown = function(e){
 		var e = e || window.event;
+		switch(e.keyCode){
+			case 38:
+				tank.direction =0;
+				break;
+			case 39:
+				tank.direction =1;
+				break;
+			case 40:
+				tank.direction =2;
+				break;
+			case 37:
+				tank.direction =3;
+				break;
+			default:
+			 	tank.direction =0;
+		}		
+		if(e.keyCode >= 37 && e.keyCode <= 40){
+			tank.isRun = true;
+		}
+		e.preventDefault();
+	}
+	window.onkeyup = function(e){
+		var e = e || window.event;
+		if(e.keyCode >= 37 && e.keyCode <= 40){
+			tank.isRun = false;
+		}
+	}
+	/*
+	window.onkeydown = function(e){
+		var e = e || window.event;
 		if(e.keyCode == 37){
 			e.preventDefault(); // 拦截滚动条事件
 			tank.dir_l = 1; // 左箭头
@@ -49,6 +79,7 @@ var render = function(){
 			tank.dir_d = 0; // 下箭头
 		}
 	}
+	*/
 	
 };
 render();
