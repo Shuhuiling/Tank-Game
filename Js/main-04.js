@@ -1,17 +1,22 @@
 var can1 = document.getElementById("canvas1");
 var ctx1 = can1.getContext('2d');
 
+var can2 = document.getElementById("canvas2");
+var ctx2 = can2.getContext('2d');
+
+var bg  = new bgObj();
+bg.init();
+bg.drawBlank(bg1);
+
 var tank = new tankObj();
 tank.init();
 
 var render = function(){
 	window.requestAnimationFrame(render);
-		
 	ctx1.clearRect(0,0,800,600);
 	
-	// drawBackground();
 	ctx1.save();
-	tank.drawTank();
+	tank.drawTank(bg1);
 	ctx1.restore();
 	// 键盘监听
 	window.onkeydown = function(e){
@@ -35,19 +40,7 @@ var render = function(){
 		if(e.keyCode >= 37 && e.keyCode <= 40){
 			tank.isRun = true;
 		}
-		// 上前方有障碍物
-		if(tank.x >= (800-trouble.wid-60) && tank.y <= trouble.y+trouble.hei){
-			// 当方向继续向上时，坦克不动
-			if(tank.direction == 0){
-				tank.isRun = false;
-			}
-		}
-		// 右边有障碍物
-		if(tank.x >= 800-trouble.wid-60){
-			if(tank.direction == 1){
-				tank.isRun = false;
-			}
-		}
+		checkCollision(tank,bg1); // 坦克和障碍物的碰撞检测
 		e.preventDefault();
 	}
 	window.onkeyup = function(e){
