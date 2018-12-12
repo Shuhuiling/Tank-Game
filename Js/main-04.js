@@ -16,7 +16,7 @@ var render = function(){
 	ctx1.clearRect(0,0,800,600);
 	
 	ctx1.save();
-	tank.drawTank(bg1);
+	tank.drawTank();
 	ctx1.restore();
 	// 键盘监听
 	window.onkeydown = function(e){
@@ -41,6 +41,7 @@ var render = function(){
 			tank.isRun = true;
 		}
 		checkCollision(tank,bg1); // 坦克和障碍物的碰撞检测
+		console.log(tank.y);
 		e.preventDefault();
 	}
 	window.onkeyup = function(e){
