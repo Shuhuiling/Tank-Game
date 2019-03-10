@@ -48,6 +48,9 @@ var render = function(){
 				tank.isRun = false;
 			}
 		}
+
+		
+		
 		e.preventDefault();
 	}
 	window.onkeyup = function(e){

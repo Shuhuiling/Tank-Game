@@ -6,3 +6,4 @@ window.requestAnimFrame = (function() {
 })();
 
 var eachSize = 60;// 小色块的大小：60*60；
+

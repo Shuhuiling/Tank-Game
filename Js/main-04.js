@@ -1,12 +1,11 @@
 var can1 = document.getElementById("canvas1");
 var ctx1 = can1.getContext('2d');
 
-var can2 = document.getElementById("canvas2");
-var ctx2 = can2.getContext('2d');
 
 var bg  = new bgObj();
 bg.init();
-bg.drawBlank(bg1);
+	
+
 
 var tank = new tankObj();
 tank.init();
@@ -14,10 +13,11 @@ tank.init();
 var render = function(){
 	window.requestAnimationFrame(render);
 	ctx1.clearRect(0,0,800,600);
-	
+	bg.drawBlank(bg1);
 	ctx1.save();
 	tank.drawTank();
 	ctx1.restore();
+
 	// 键盘监听
 	window.onkeydown = function(e){
 		var e = e || window.event;
@@ -40,8 +40,7 @@ var render = function(){
 		if(e.keyCode >= 37 && e.keyCode <= 40){
 			tank.isRun = true;
 		}
-		checkCollision(tank,bg1); // 坦克和障碍物的碰撞检测
-		console.log(tank.y);
+		
 		e.preventDefault();
 	}
 	window.onkeyup = function(e){
@@ -50,5 +49,6 @@ var render = function(){
 			tank.isRun = false;
 		}
 	}
+
 };
 render();

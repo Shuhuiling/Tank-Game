@@ -23,19 +23,19 @@ bgObj.prototype.drawBlank = function(map1){
 			if(map1[i][j] == 1){
 				this.x = j*this.size;
 				this.y = i*this.size;
-				ctx2.beginPath();
-				ctx2.rect(this.x,this.y,this.size,this.size);
-				ctx2.fillStyle = "red";
-				ctx2.fill();
-				ctx2.closePath();
+				ctx1.beginPath();
+				ctx1.rect(this.x,this.y,this.size,this.size);
+				ctx1.fillStyle = "red";
+				ctx1.fill();
+				ctx1.closePath();
 			}else if(map1[i][j] == 2){
 				this.x = j*this.size;
 				this.y = i*this.size;
-				ctx2.beginPath();
-				ctx2.rect(this.x,this.y,this.size,this.size);
-				ctx2.fillStyle = "blue";
-				ctx2.fill();
-				ctx2.closePath();
+				ctx1.beginPath();
+				ctx1.rect(this.x,this.y,this.size,this.size);
+				ctx1.fillStyle = "blue";
+				ctx1.fill();
+				ctx1.closePath();
 			}
 		}
 	}
