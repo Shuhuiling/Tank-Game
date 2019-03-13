@@ -64,8 +64,8 @@
 
 // 坦克object1和障碍物object2的💥
 // 坦克每次运动都要和所有的障碍物执行一遍
-
-function checkCollision(box1,object2){
+// 子弹和障碍物的碰撞	
+function checkCollision1(box1,object2){
 	var box2 = [];
 	for(var i=0;i<10;i++){// 行
 		for(var j=0;j<10;j++){// 列
@@ -86,6 +86,7 @@ function checkCollision(box1,object2){
 				if(x1 < x2 && y1 < y2){
 					var interArea = (x2 - x1) * (y2 - y1);
 					if(interArea > 0)
+
 						return false;
 					
 				}
@@ -95,8 +96,6 @@ function checkCollision(box1,object2){
 	return true;
 }
 
-// q1:往上走穿墙，导致向左，向右走走特定的距离就停住，向下走可以；
-	
-	
+
 	
 

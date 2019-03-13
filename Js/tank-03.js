@@ -36,7 +36,6 @@ tankObj.prototype.getBox = function(dir){
 			if(x >= 540) x =540;
 		}
 	
-
 	var box1 = []; // box1[0,1,2,3]： 左 右 上 下
 	box1[0] = x;
 	box1[1] = box1[0] + eachSize;
@@ -47,8 +46,8 @@ tankObj.prototype.getBox = function(dir){
 
 tankObj.prototype.drawTank = function() {
     var box1 = this.getBox(tank.direction);
-	var isCollison = checkCollision(box1,bg1); // 坦克和障碍物的碰撞检测
-	
+	var isCollison = checkCollision1(box1,bg1); // 坦克和障碍物的碰撞检测
+
 	if(this.isRun && isCollison){
 		var speed = this.speed;
 		if(this.direction%2 == 0){

@@ -10,6 +10,7 @@ bg.init();
 var tank = new tankObj();
 tank.init();
 
+
 var render = function(){
 	window.requestAnimationFrame(render);
 	ctx1.clearRect(0,0,800,600);
@@ -34,13 +35,13 @@ var render = function(){
 			case 37:
 				tank.direction =3;
 				break;
+			
 			default:
 			 	tank.direction =0;
 		}		
 		if(e.keyCode >= 37 && e.keyCode <= 40){
 			tank.isRun = true;
 		}
-		
 		e.preventDefault();
 	}
 	window.onkeyup = function(e){

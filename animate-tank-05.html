@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		* {
+			padding: 0;
+			margin: 0;
+		}
+		#myCanvas {
+			position: relative;
+		}
+		#canvas2 {
+			position: absolute;
+			z-index: 0;
+		}
+		#canvas1 {
+			position: absolute;
+			z-index: 1;
+		}
+	</style>
+</head>
+<body>
+	<div id="myCanvas">
+		<canvas id="canvas1" width="600" height="600"></canvas>
+	</div>
+
+	<script src="Js/commonFunction.js"></script>
+	<script src="Js/level.js"></script>
+	<script src="Js/background.js"></script>
+	<script src="Js/collision.js"></script>
+ 	<script src="Js/tank-03.js"></script>
+ 	<script src="Js/bullet.js"></script>
+ 	<script src="Js/bulletManager.js"></script>
+	<script src="Js/main-05.js"></script>
+</body>
+</html>
+<!-- 添加子弹 -->
+<!-- 子弹撞墙,子弹消失 -->
