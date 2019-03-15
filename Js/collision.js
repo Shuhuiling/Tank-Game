@@ -86,7 +86,7 @@ function checkCollision1(box1,object2){
 				if(x1 < x2 && y1 < y2){
 					var interArea = (x2 - x1) * (y2 - y1);
 					if(interArea > 0)
-
+						
 						return false;
 					
 				}

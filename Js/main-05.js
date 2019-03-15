@@ -1,13 +1,14 @@
 var can1 = document.getElementById("canvas1");
 var ctx1 = can1.getContext('2d');
 
-var bg  = new bgObj();
-bg.init();
+// var bg  = new bgObj();
+// bg.init();
+
+var gameContext = new levelManagerObj();
+gameContext.init(levelConfig1);
 
 var tank = new tankObj();
-tank.init();
-
-
+tank.init(gameContext);
 
 var deltaTime = 0;
 var lastTime = Date.now();
@@ -31,7 +32,7 @@ window.onkeydown = function(e){
 			break;
 		case 13:
 			var bullet = new bulletObj();
-			bullet.init(tank);
+			bullet.init(tank,gameContext);
 			bulletManager.addBullet(bullet);
 			break;
 		default:
@@ -50,7 +51,6 @@ window.onkeyup = function(e){
 		}
 	}
 
-
 var render = function(){
 	window.requestAnimationFrame(render);
 	var nowTime = Date.now();
@@ -59,7 +59,9 @@ var render = function(){
 	// console.log(deltaTime);
 	ctx1.clearRect(0,0,800,600);
 	
-	bg.drawBlank(bg1);
+	// bg.drawBlank(tempBg1);
+	// 绘制砖块对象
+	gameContext.drawLevel();
 	
 	ctx1.save();
 	tank.drawTank();

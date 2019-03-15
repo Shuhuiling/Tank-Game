@@ -5,7 +5,6 @@ var bgObj = function(){
 	this.heiCount;
 	this.x;
 	this.y;
-	this.size;
 }
 bgObj.prototype.init = function(){
 	this.width = 600;
@@ -20,22 +19,29 @@ bgObj.prototype.init = function(){
 bgObj.prototype.drawBlank = function(map1){
 	for(var i=0;i<this.widCount;i++){
 		for(var j=0;j<this.heiCount;j++){
-			if(map1[i][j] == 1){
-				this.x = j*this.size;
-				this.y = i*this.size;
-				ctx1.beginPath();
-				ctx1.rect(this.x,this.y,this.size,this.size);
-				ctx1.fillStyle = "red";
-				ctx1.fill();
-				ctx1.closePath();
-			}else if(map1[i][j] == 2){
-				this.x = j*this.size;
-				this.y = i*this.size;
-				ctx1.beginPath();
-				ctx1.rect(this.x,this.y,this.size,this.size);
-				ctx1.fillStyle = "blue";
-				ctx1.fill();
-				ctx1.closePath();
+			// if(map1[i][j] == 1){
+			// 	this.x = j*this.size;
+			// 	this.y = i*this.size;
+			// 	ctx1.beginPath();
+			// 	ctx1.rect(this.x,this.y,this.size,this.size);
+			// 	ctx1.fillStyle = "red";
+			// 	ctx1.fill();
+			// 	ctx1.closePath();
+			// }else if(map1[i][j] == 2){
+			// 	this.x = j*this.size;
+			// 	this.y = i*this.size;
+			// 	ctx1.beginPath();
+			// 	ctx1.rect(this.x,this.y,this.size,this.size);
+			// 	ctx1.fillStyle = "blue";
+			// 	ctx1.fill();
+			// 	ctx1.closePath();
+			// }
+			if(map1[i][j] == 2){
+				var brick = new brickObj();
+				brick.init();
+				var x = j*this.size;
+				var y = i*this.size;
+				brick.draw(x,y);
 			}
 		}
 	}

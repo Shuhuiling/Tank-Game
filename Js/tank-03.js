@@ -10,13 +10,14 @@ var tankObj = function() {
 	this.isRun;
 	
 }
-tankObj.prototype.init = function() {
+tankObj.prototype.init = function(gameContext) {
 	this.x = 300;
 	this.y = 540;
 	this.speed = 1;
 	this.tankBody.src = "img/enemy3D.jpg";
 	this.direction = 0;// 0,1,2,3 ： 上，右，下，左
 	this.isRun = false;
+	this.gameContext = gameContext;
 }
 tankObj.prototype.getBox = function(dir){
 	var x = this.x;
@@ -46,9 +47,10 @@ tankObj.prototype.getBox = function(dir){
 
 tankObj.prototype.drawTank = function() {
     var box1 = this.getBox(tank.direction);
-	var isCollison = checkCollision1(box1,bg1); // 坦克和障碍物的碰撞检测
-
-	if(this.isRun && isCollison){
+	var isCollison = this.gameContext.checkCollision(box1); // 坦克和砖块的碰撞检测
+	// 如果检测到bullet和isCollison对象碰撞，则isCollision = false;
+	
+	if(this.isRun && !isCollison){
 		var speed = this.speed;
 		if(this.direction%2 == 0){
 			// 0，2 y值在变化
