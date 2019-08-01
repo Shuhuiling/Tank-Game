@@ -22,17 +22,20 @@ brickObj.prototype.draw = function(){
 			this.hasBoomed = true;
 		}else{
 			this.frameIndex = parseInt(elaspTime/333);
-			ctx1.drawImage(
-        	 this.boomSrc
-		     ,this.frameIndex*30 + 300//截取原始图片的 x坐标
-		     ,0//截取原始图片的 y坐标
-		     ,30//截取原始图片的 宽度
-		     ,30 // 截取的高度
-		     ,this.x//图片在canvas画布上的x坐标
-		     ,this.y//图片在canvas画布上的y坐标
-		     ,this.size//绘制图片的宽度
-		     ,this.size//绘制图片的高度
-                 );
+			// if(this.frameIndex == 3) this.frameIndex = 0;
+				ctx1.drawImage(
+        	 		this.boomSrc
+		     		,this.frameIndex*32 + 320//截取原始图片的 x坐标
+		     		
+		     		,0//截取原始图片的 y坐标
+		     		,32//截取原始图片的 宽度
+		     		,36 // 截取的高度
+		     		,this.x//图片在canvas画布上的x坐标
+		     		,this.y//图片在canvas画布上的y坐标
+		     		,this.size//绘制图片的宽度
+		     		,this.size//绘制图片的高度
+             	);
+			// this.frameIndex++;
 		}
 	}else if(this.hasBoomed){
 		return;

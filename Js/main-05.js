@@ -1,14 +1,20 @@
 var can1 = document.getElementById("canvas1");
 var ctx1 = can1.getContext('2d');
 
-// var bg  = new bgObj();
-// bg.init();
-
 var gameContext = new levelManagerObj();
 gameContext.init(levelConfig1);
 
 var tank = new tankObj();
 tank.init(gameContext);
+
+// var alTank1 = new alTank();
+// alTank1.init();
+// alTank1.x = 0;
+// alTank1.y = 0;
+ // var alTank2 = new alTank();
+ // alTank2.init();
+ // alTank2.x = 530;
+ // alTank2.y = 0;
 
 var deltaTime = 0;
 var lastTime = Date.now();
@@ -65,6 +71,8 @@ var render = function(){
 	
 	ctx1.save();
 	tank.drawTank();
+	// alTank1.draw();
+	// alTank2.draw();
 	ctx1.restore();
 	
 	bulletManager.drawBullet(deltaTime);

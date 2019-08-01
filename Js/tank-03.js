@@ -8,6 +8,7 @@ var tankObj = function() {
 	this.tankBody = new Image();
 	this.direction;
 	this.isRun;
+	// this.isAl;
 	
 }
 tankObj.prototype.init = function(gameContext) {
@@ -69,12 +70,12 @@ tankObj.prototype.drawTank = function() {
 	ctx1.translate(this.x+30,this.y+30);
 	ctx1.rotate((Math.PI / 180) * (90*this.direction));
 	ctx1.translate(-this.x-30,-this.y-30);
-	// ctx1.drawImage(this.tankBody,this.x,this.y);
-	ctx1.beginPath();
-	ctx1.rect(this.x,this.y,eachSize,eachSize);
-	ctx1.fillStyle = "black";
-	ctx1.fill();
-	ctx1.closePath();
+	ctx1.drawImage(this.tankBody,this.x,this.y);
+	// ctx1.beginPath();
+	// ctx1.rect(this.x,this.y,eachSize,eachSize);
+	// ctx1.fillStyle = "black";
+	// ctx1.fill();
+	// ctx1.closePath();
 }
 
 

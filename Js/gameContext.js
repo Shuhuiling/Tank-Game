@@ -4,9 +4,9 @@ var levelManagerObj = function(){
 	this.audio = new Audio();
 }
 
-levelManagerObj.prototype.init = function(bg){
+levelManagerObj.prototype.init = function(levelConfig){
 	this.size = 60;
-	this.curLevel = this.generatLevel(bg);
+	this.curLevel = this.generatLevel(levelConfig);
 }
 
 levelManagerObj.prototype.generatLevel = function(levelConfig){
@@ -50,7 +50,7 @@ levelManagerObj.prototype.checkCollision = function(box1){
 	}
 	return null;
 }
-// function press(code){
+// function process(code){
 // 	..........
 // 	..........;
 // }
